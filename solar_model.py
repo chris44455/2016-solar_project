@@ -17,13 +17,14 @@ def calculate_force(body, space_objects):
     body.Fx = body.Fy = 0
     for obj in space_objects:
         if body == obj:
-            continue  # тело не действует гравитационной силой на само себя!
-        r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
+            continue
+        else:      # тело не действует гравитационной силой на само себя!
+            r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
         #Считаем изменение силы для каждого момента времени
-        dFx = (body.m*obj.m*G/r**3)*(obj.x-body.x)
-        dFy = (body.m*obj.m*G/r**3)*(obj.y-body.y)
-        body.Fx += dFx  # FIXME: нужно вывести формулу...
-        body.Fy += dFy  # FIXME: нужно вывести формулу...
+            dFx = (body.m*obj.m*G/r**3)*(obj.x-body.x)
+            dFy = (body.m*obj.m*G/r**3)*(obj.y-body.y)
+            body.Fx += dFx  # FIXME: нужно вывести формулу...
+            body.Fy += dFy  # FIXME: нужно вывести формулу...
 
 
 def move_space_object(body, dt):
